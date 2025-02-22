@@ -2,12 +2,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {PropsWithChildren, useEffect, useState} from 'react';
 import CTDrawer from '../components/CTDrawer';
 import {appDrawerTabs} from './navJson';
-import {Text} from 'react-native';
 import {Dashboard} from './screens';
 import {RootState} from '../store/store';
 import {useSelector} from 'react-redux';
 import Login from '../screens/auth/Login';
 import { AuthNavigator } from './Stacks';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { COLORS } from '../theme';
 
 type NavigatorProps = PropsWithChildren<{}>;
 
@@ -26,7 +27,9 @@ const Navigator: React.FC<NavigatorProps> = ({children}) => {
   };
   return (
     <NavigationContainer>
+       <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primaryColor}}>
       {authenticated ? <CTDrawer screens={drawerScreen} /> : <AuthNavigator />}
+      </SafeAreaView>
     </NavigationContainer>
   );
 };
