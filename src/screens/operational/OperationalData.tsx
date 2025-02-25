@@ -10,6 +10,7 @@ import React, {useEffect, useState} from 'react';
 import {BarChart} from 'react-native-gifted-charts';
 import api from '../../services';
 import {COLORS} from '../../theme/colors';
+import EmptyComponent from '../../components/EmptyComponent';
 
 const OperationalData = ({
   selectedFileId,
@@ -18,6 +19,11 @@ const OperationalData = ({
   const [chartData, setChartData] = useState<any>(null);
   const [chartLabels, setChartLabels] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  let empty =
+    (!chartData?.monthlyData?.monthLabels?.length ||
+      chartData?.monthlyData?.monthLabels?.length < 1) &&
+    (!chartData?.weeklyData?.monthLabels?.length ||
+      chartData?.weeklyData?.monthLabels?.length < 1);
 
   useEffect(() => {
     if (selectedFileId && selectedMonthId) {
@@ -91,84 +97,89 @@ const OperationalData = ({
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       {loading ? (
         <ActivityIndicator size="large" color={COLORS.newDark} />
-      ) : chartData ? (
+      ) : chartData && !empty ? (
         <>
           {/* Weekly Data */}
-          {chartData.weeklyData && chartData.weeklyData.allCol && (
-            <>
-              <Text style={styles.Title}>Weekly Data</Text>
-              {['leads', 'closed', 'potential', 'leadsFree'].map(
-                (key, index) => {
-                  const data = chartData.weeklyData[key];
-                  if (data && data.length > 0) {
-                    // Generate dynamic week labels based on the length of the data array
-                    const weekLabels = Array.from(
-                      {length: data.length},
-                      (_, i) => `Week ${i + 1}`,
-                    );
+          {chartData.weeklyData &&
+            chartData?.weeklyData?.monthLabels?.length > 0 && (
+              <>
+                <Text style={styles.Title}>Weekly Data</Text>
+                {['leads', 'closed', 'potential', 'leadsFree'].map(
+                  (key, index) => {
+                    const data = chartData.weeklyData[key];
+                    if (data && data.length > 0) {
+                      // Generate dynamic week labels based on the length of the data array
+                      const weekLabels = Array.from(
+                        {length: data.length},
+                        (_, i) => `Week ${i + 1}`,
+                      );
 
-                    // Dynamically render the chart for each key
-                    const chartTitles = [
-                      chartLabels[0],
-                      chartLabels[1],
-                      chartLabels[2],
-                      chartLabels[3],
-                    ];
-                    const chartColors = [
-                      COLORS.blueIcon,
-                      COLORS.greenIcon,
-                      COLORS.yellowIcon,
-                      COLORS.newDark,
-                    ];
+                      // Dynamically render the chart for each key
+                      const chartTitles = [
+                        chartLabels[0],
+                        chartLabels[1],
+                        chartLabels[2],
+                        chartLabels[3],
+                      ];
+                      const chartColors = [
+                        COLORS.blueIcon,
+                        COLORS.greenIcon,
+                        COLORS.yellowIcon,
+                        COLORS.newDark,
+                      ];
 
-                    return renderBarChart(
-                      data, // Data
-                      chartTitles[index], // Title
-                      chartColors[index], // Color
-                      weekLabels, // Dynamic labels
-                    );
-                  } else {
-                    return null; // If no data exists for this key, render nothing
-                  }
-                },
-              )}
-            </>
-          )}
+                      return renderBarChart(
+                        data, // Data
+                        chartTitles[index], // Title
+                        chartColors[index], // Color
+                        weekLabels, // Dynamic labels
+                      );
+                    } else {
+                      return null; // If no data exists for this key, render nothing
+                    }
+                  },
+                )}
+              </>
+            )}
 
           {/* Monthly Data */}
-          {chartData.monthlyData && (
-            <>
-              <Text style={styles.Title}>Monthly data</Text>
-              {renderBarChart(
-                chartData.monthlyData.leads,
-                chartLabels[0],
-                COLORS.greenIcon,
-                chartData.monthlyData.monthLabels,
-              )}
-              {renderBarChart(
-                chartData.monthlyData.closed,
-                chartLabels[1],
-                COLORS.blueIcon,
-                chartData.monthlyData.monthLabels,
-              )}
+          {chartData.monthlyData &&
+            chartData?.monthlyData?.monthLabels?.length > 0 && (
+              <>
+                <Text style={styles.Title}>Monthly data</Text>
+                {renderBarChart(
+                  chartData.monthlyData.leads,
+                  chartLabels[0],
+                  COLORS.greenIcon,
+                  chartData.monthlyData.monthLabels,
+                )}
+                {renderBarChart(
+                  chartData.monthlyData.closed,
+                  chartLabels[1],
+                  COLORS.blueIcon,
+                  chartData.monthlyData.monthLabels,
+                )}
 
-              {renderBarChart(
-                chartData.monthlyData.potential,
-                chartLabels[2],
-                COLORS.yellowIcon,
-                chartData.monthlyData.monthLabels,
-              )}
-              {renderBarChart(
-                chartData.monthlyData.leadsFree,
-                chartLabels[3],
-                COLORS.newDark,
-                chartData.monthlyData.monthLabels,
-              )}
-            </>
-          )}
+                {renderBarChart(
+                  chartData.monthlyData.potential,
+                  chartLabels[2],
+                  COLORS.yellowIcon,
+                  chartData.monthlyData.monthLabels,
+                )}
+                {renderBarChart(
+                  chartData.monthlyData.leadsFree,
+                  chartLabels[3],
+                  COLORS.newDark,
+                  chartData.monthlyData.monthLabels,
+                )}
+              </>
+            )}
         </>
       ) : (
-        <Text style={styles.noDataText}>No Data Available</Text>
+        <EmptyComponent
+          longMsg="No data available at the moment"
+          shortMsg="No records found"
+        />
       )}
     </ScrollView>
   );

@@ -1,9 +1,10 @@
-import { View, ActivityIndicator, Alert, StyleSheet, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import api from '../../services';
-import Selector from '../../components/Selector';
-import { LineChart } from 'react-native-gifted-charts';
-import { COLORS } from '../../theme/colors';
+import { View, ActivityIndicator, Alert, StyleSheet, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import api from "../../services";
+import Selector from "../../components/Selector";
+import { LineChart } from "react-native-gifted-charts";
+import { COLORS } from "../../theme/colors";
+import EmptyComponent from "../../components/EmptyComponent";
 
 const Ageing = () => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ const Ageing = () => {
     getAgeingData();
   }, []);
 
-  console.log(responseData, 'responseData from ageing');
+  console.log(responseData, "responseData from ageing");
 
   const formatChartData = (data: any) => {
     return [
@@ -35,7 +36,7 @@ const Ageing = () => {
         setAgeingData(data);
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
@@ -44,30 +45,34 @@ const Ageing = () => {
   const fetchAgeingData = async (id: number) => {
     try {
       setLoading(true);
-      const { data, status } = await api.client.getAgeingTemplate({ tempid: id });
+      const { data, status } = await api.client.getAgeingTemplate({
+        tempid: id,
+      });
       if (status === 200) {
         setResponseData(data);
         setChartData(formatChartData(data));
       } else {
-        Alert.alert('Error', 'Failed to fetch data');
+        Alert.alert("Error", "Failed to fetch data");
       }
     } catch (error) {
-      console.error('API Error:', error);
-      Alert.alert('Error', 'Something went wrong');
+      console.error("API Error:", error);
+      Alert.alert("Error", "Something went wrong");
     } finally {
       setLoading(false);
     }
   };
 
   const formattedData = Array.isArray(ageingData)
-    ? ageingData.map(item => ({
+    ? ageingData.map((item) => ({
         label: item.text,
         value: item.value,
       }))
     : [];
 
   const handleSelection = (value: string) => {
-    const selectedTemplateObject = formattedData.find(item => item.label === value);
+    const selectedTemplateObject = formattedData.find(
+      (item) => item.label === value
+    );
     if (selectedTemplateObject) {
       fetchAgeingData(selectedTemplateObject.value);
     }
@@ -80,18 +85,18 @@ const Ageing = () => {
       <Selector
         data={formattedData}
         onChangeText={handleSelection}
-        value={selectedTemplate || ''}
+        value={selectedTemplate || ""}
         type="label"
         placeholder="Select a Template *"
-        containerStyle={{ width: '100%', marginBottom: 20 }}
+        containerStyle={{ width: "100%", marginBottom: 20 }}
       />
 
       {/* Loading Indicator */}
       {loading && <ActivityIndicator size="large" color="#0000ff" />}
 
       {/* Show Chart Only When a Label is Selected */}
-      {!loading && selectedTemplate && chartData && (
-        <View style={{ alignItems: 'center', marginTop: 20 }}>
+      {!loading && selectedTemplate && chartData ? (
+        <View style={{ alignItems: "center", marginTop: 20 }}>
           <Text style={styles.chartTitle}>Ageing</Text>
           <LineChart
             data={chartData}
@@ -99,8 +104,8 @@ const Ageing = () => {
             height={200}
             spacing={90}
             thickness={1}
-            yAxisTextStyle={{ color: 'black', fontSize: 12 }}
-            xAxisLabelTextStyle={{ color: 'black', fontSize: 12 }}
+            yAxisTextStyle={{ color: "black", fontSize: 12 }}
+            xAxisLabelTextStyle={{ color: "black", fontSize: 12 }}
             showVerticalLines
             color="green"
             isAnimated
@@ -109,6 +114,8 @@ const Ageing = () => {
             endFillColor="rgba(122, 186, 142, 0.07)"
           />
         </View>
+      ) : (
+        <EmptyComponent />
       )}
     </View>
   );
@@ -118,14 +125,14 @@ export default Ageing;
 const styles = StyleSheet.create({
   chartTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: COLORS.secondaryColor,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.8,
     marginBottom: 16,
     borderBottomWidth: 2,
-    borderBottomColor: '#A48BE0',
+    borderBottomColor: "#A48BE0",
     paddingBottom: 2,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
 });

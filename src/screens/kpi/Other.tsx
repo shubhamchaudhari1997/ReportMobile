@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services';
 import { LineChart, BarChart } from 'react-native-gifted-charts';
 import { COLORS } from '../../theme/colors';
+import EmptyComponent from '../../components/EmptyComponent';
 
 const Other = () => {
   const [chartData, setChartData] = useState({
@@ -57,13 +58,13 @@ const Other = () => {
       {/* Show loader while fetching data */}
       {loading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={COLORS.secondaryColor} />
+          <ActivityIndicator size="large" color={COLORS.newDark} />
           <Text style={styles.loadingText}>Loading charts...</Text>
         </View>
       ) : (
         <>
           {/* Line Chart */}
-          {chartData.firstData.length > 0 && (
+          {chartData.firstData.length > 0 ? (
             <View style={styles.chartContainer}>
               <Text style={styles.chartTitle}>Other Line Chart</Text>
               <LineChart
@@ -81,7 +82,7 @@ const Other = () => {
                 endFillColor="rgba(139, 139, 216, 0.07)"
               />
             </View>
-          )}
+          ):(<EmptyComponent/>)}
 
           {/* Bar Chart */}
           {chartData.secondData.length > 0 && (
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    color: COLORS.secondaryColor,
+    color: COLORS.newDark,
     marginTop: 10,
     fontWeight: 'bold',
   },
