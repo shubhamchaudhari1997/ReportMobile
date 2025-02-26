@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services';
 import { LineChart, BarChart } from 'react-native-gifted-charts';
 import { COLORS } from '../../theme/colors';
+import EmptyComponent from '../../components/EmptyComponent';
 
 const PLScreen = () => {
   const [chartData, setChartData] = useState({
@@ -66,13 +67,13 @@ const PLScreen = () => {
       {/* Show loader while fetching data */}
       {loading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={COLORS.secondaryColor} />
+          <ActivityIndicator size="large" color={COLORS.newDark} />
           <Text style={styles.loadingText}>Loading charts...</Text>
         </View>
       ) : (
         <>
           {/* Line Chart for First Data */}
-          {chartData.firstData.length > 0 && (
+          {chartData.firstData.length > 0 ? (
             <View style={styles.chartContainer}>
               <Text style={styles.chartTitle}>Revenue Growth Rate</Text>
               <LineChart
@@ -90,7 +91,7 @@ const PLScreen = () => {
                 endFillColor="rgba(122, 186, 142, 0.07)"
               />
             </View>
-          )}
+          ):(<EmptyComponent/>)}
 
           {/* Line Chart for Second Data */}
           {chartData.secondData.length > 0 && (
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    color: COLORS.secondaryColor,
+    color: COLORS.newDark,
     marginTop: 10,
     fontWeight: 'bold',
   },

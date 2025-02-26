@@ -70,13 +70,13 @@ const StartUp: React.FC<IProps> = ({ }) => {
   };
 
   return (
-    <View style={{ flex: 1,backgroundColor:Colors.primaryColor }}>
+    <View style={{ flex: 1,backgroundColor:'white'}}>
       {/* <StatusBar
                 backgroundColor={Colors.primaryColorLight}
                 barStyle="dark-content"
             /> */}
       <LottieView
-        style={{ flex: 1 }}
+        style={{ flex:1,margin:-30}}
         source={require('../../assets/animations/startups.json')}
         autoPlay
         loop

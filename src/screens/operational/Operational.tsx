@@ -44,8 +44,6 @@ const Operational = () => {
     getOperationalData();
   }, []);
 
-  console.log(fileOptions, 'fileOptions');
-
   const getOperationalData = async () => {
     try {
       const {data, status} = await api.client.getOperationalData();

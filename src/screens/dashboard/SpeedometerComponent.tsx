@@ -24,14 +24,9 @@ const SpeedometerComponent: React.FC<SpeedometerComponentProps> = ({
             activeBarColor: '#ff2900',
           },
           {
-            name: 'Needs Attention',
-            labelColor: '#f4ab44',
-            activeBarColor: '#f4ab44',
-          },
-          {
             name: 'Stable',
-            labelColor: '#f2cf1f',
-            activeBarColor: '#f2cf1f',
+            labelColor: 'yellow',
+            activeBarColor: 'yellow',
           },
           {
             name: 'High Growth',
