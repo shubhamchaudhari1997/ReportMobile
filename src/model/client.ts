@@ -7,6 +7,10 @@ type drAgeingTemplateParam = {
   tempid: number
 };
 
+type ViewReportModal = {
+  TempID: number
+};
+
 type MonthlyData = {
   closed: number[];
   leads: number[];

@@ -31,14 +31,15 @@ const DetailReports = () => {
       setLoading(true);
       const {data, status} = await api.client.getReportsData();
 
-      if (status === 200 && data) {
+      if (status === 200 && data) {        
         const formattedData = data.map(
           (item: {
-            template: {fileName: any};
+            template: {fileName: any,temp_Id:any};
             dateselected: any;
             dataValues: any[];
           }) => ({
             name: item.template?.fileName || 'Unknown',
+            tempId: item.template?.temp_Id || 0,
             date: item.dateselected?.split('T')[0] || 'N/A',
             values: item.dataValues.map(row => row.split(',')),
           }),
@@ -57,6 +58,10 @@ const DetailReports = () => {
   const startIndex = (page - 1) * PAGE_SIZE;
   const paginatedData = reportsData.slice(startIndex, startIndex + PAGE_SIZE);
 
+  const onDetailsViewPress=(item:any)=>{
+    navigation.navigate('DetailReportsView',{item})
+  }  
+
   return (
     <Container
       header={{
@@ -66,7 +71,7 @@ const DetailReports = () => {
         toggleDrawer: true,
       }}>
       {loading ? (
-        <ActivityIndicator size="large" color={COLORS.newDark} />
+        <ActivityIndicator size="large" color={COLORS.newDark} style={{flex:1}}/>
       ) : (
         <View style={styles.container}>
           {/* Table Header */}
@@ -84,7 +89,7 @@ const DetailReports = () => {
               <View style={styles.row}>
                 <Text style={[styles.cell, {flex: 1.2}]}>{item.name}</Text>
                 <Text style={styles.cell}>{item.date}</Text>
-                <TouchableOpacity style={styles.viewButton}>
+                <TouchableOpacity style={styles.viewButton} onPress={()=>onDetailsViewPress(item)}>
                   <Text style={styles.buttonText}>View</Text>
                 </TouchableOpacity>
               </View>

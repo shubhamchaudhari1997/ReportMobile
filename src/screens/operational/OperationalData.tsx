@@ -98,7 +98,7 @@ const OperationalData = ({
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       {loading ? (
-        <ActivityIndicator size="large" color={COLORS.newDark} />
+        <ActivityIndicator size="large" color={COLORS.newDark} style={{flex:1}}/>
       ) : chartData && !empty ? (
         <>
           {/* Weekly Data */}

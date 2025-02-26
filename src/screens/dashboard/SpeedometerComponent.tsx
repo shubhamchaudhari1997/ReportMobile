@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
+import { COLORS } from '../../theme';
 
 interface SpeedometerComponentProps {
   label: string;
@@ -25,8 +26,8 @@ const SpeedometerComponent: React.FC<SpeedometerComponentProps> = ({
           },
           {
             name: 'Stable',
-            labelColor: 'yellow',
-            activeBarColor: 'yellow',
+            labelColor: COLORS.yellowIcon,
+            activeBarColor: COLORS.yellowIcon,
           },
           {
             name: 'High Growth',

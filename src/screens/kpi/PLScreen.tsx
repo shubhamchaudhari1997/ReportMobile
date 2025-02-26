@@ -1,9 +1,15 @@
-import { View, Text, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import api from '../../services';
-import { LineChart, BarChart } from 'react-native-gifted-charts';
-import { COLORS } from '../../theme/colors';
-import EmptyComponent from '../../components/EmptyComponent';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  ActivityIndicator,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import api from "../../services";
+import { LineChart, BarChart } from "react-native-gifted-charts";
+import { COLORS } from "../../theme/colors";
+import EmptyComponent from "../../components/EmptyComponent";
 
 const PLScreen = () => {
   const [chartData, setChartData] = useState({
@@ -16,8 +22,6 @@ const PLScreen = () => {
 
   const [loading, setLoading] = useState(true); // Loading state
 
-  console.log(chartData,'chartData');
-  
 
   useEffect(() => {
     getPLData();
@@ -30,8 +34,6 @@ const PLScreen = () => {
       if (status === 200 && data) {
         const apiData = data?.data;
 
-        console.log(apiData,'apiData');
-        
 
         setChartData({
           monthLabels: apiData.monthLabels || [],
@@ -42,24 +44,24 @@ const PLScreen = () => {
         });
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     } finally {
       setLoading(false); // Stop loading
     }
   };
 
-  const formatBarChartData = values =>
+  const formatBarChartData = (values) =>
     values.map((value, index) => ({
       value,
-      label: chartData.monthLabels[index] || '',
-      frontColor: ['#7EA8BE', '#A1CF6B', '#A48BE0', '#FFB347'][index % 4], 
+      label: chartData.monthLabels[index] || "",
+      frontColor: ["#7EA8BE", "#A1CF6B", "#A48BE0", "#FFB347"][index % 4],
     }));
 
   // Function to format data for charts
-  const formatChartData = values =>
+  const formatChartData = (values) =>
     values.map((value, index) => ({
       value,
-      label: chartData.monthLabels[index] || '',
+      label: chartData.monthLabels[index] || "",
     }));
 
   return (
@@ -67,7 +69,11 @@ const PLScreen = () => {
       {/* Show loader while fetching data */}
       {loading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={COLORS.newDark} />
+          <ActivityIndicator
+            size="large"
+            color={COLORS.newDark}
+            style={{ flex: 1 }}
+          />
           <Text style={styles.loadingText}>Loading charts...</Text>
         </View>
       ) : (
@@ -91,7 +97,9 @@ const PLScreen = () => {
                 endFillColor="rgba(122, 186, 142, 0.07)"
               />
             </View>
-          ):(<EmptyComponent/>)}
+          ) : (
+            <EmptyComponent />
+          )}
 
           {/* Line Chart for Second Data */}
           {chartData.secondData.length > 0 && (
@@ -159,30 +167,30 @@ const styles = StyleSheet.create({
   },
   loaderContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 400, // Ensures loader is centered properly
   },
   loadingText: {
     fontSize: 16,
     color: COLORS.newDark,
     marginTop: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   chartContainer: {
     marginBottom: 40,
   },
   chartTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: COLORS.secondaryColor,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.8,
     marginBottom: 16,
     borderBottomWidth: 2,
-    borderBottomColor: '#A48BE0',
+    borderBottomColor: "#A48BE0",
     paddingBottom: 2,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
 });
 

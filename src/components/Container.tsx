@@ -93,7 +93,7 @@ const Container: React.FC<ContainerIProps> = ({
 const Loading = () => {
   return (
     <View style={containerStyle.loadingContainer}>
-      <ActivityIndicator color={COLORS.new} size="large" />
+        <ActivityIndicator size="large" color={COLORS.newDark} style={{flex:1}}/>
     </View>
   );
 };

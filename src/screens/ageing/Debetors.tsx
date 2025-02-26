@@ -97,7 +97,13 @@ const Debetors = () => {
       />
 
       {/* Loading Indicator */}
-      {loading && <ActivityIndicator size="large" color="#0000ff" />}
+      {loading && (
+        <ActivityIndicator
+          size="large"
+          color={COLORS.newDark}
+          style={{ flex: 1 }}
+        />
+      )}
 
       {/* Show Chart Only When a Label is Selected */}
       {!loading && selectedTemplate && chartData ? (

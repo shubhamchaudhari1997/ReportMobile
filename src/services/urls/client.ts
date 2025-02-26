@@ -30,6 +30,7 @@ const clientController = () => {
     getsortByMYDetails: getCommonData(`sortByMY`),
     getKpiData: getCommonData(`ViewKPI`),
     getKPIDetails: getCommonData(`getKPIDetails/13`),
+    getViewReportAgeing: getCommonData(`ViewReportAgeing`),
   };
 
   const getQualityReportDetails = {

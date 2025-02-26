@@ -103,6 +103,14 @@ const appStacks = {
         type: 'Ionicons',
         options: {headerShown: false},
       },
+      {
+        name: 'DetailReportsView',
+        key: 'detailReportsView',
+        component: SCREENS.DetailReportsView,
+        icon: 'reader',
+        type: 'Ionicons',
+        options: {headerShown: false},
+      },
     ],
   },
   kpiStacks: {
