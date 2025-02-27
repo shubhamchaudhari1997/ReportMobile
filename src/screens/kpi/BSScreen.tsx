@@ -65,7 +65,7 @@ const BSScreen = () => {
       {/* Show loader while fetching data */}
       {loading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={COLORS.newDark} />
+        <ActivityIndicator size="large" color={COLORS.newDark} style={{flex:1}}/>
           <Text style={styles.loadingText}>Loading charts...</Text>
         </View>
       ) : (

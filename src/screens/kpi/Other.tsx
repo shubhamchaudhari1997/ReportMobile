@@ -1,9 +1,15 @@
-import { View, Text, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import api from '../../services';
-import { LineChart, BarChart } from 'react-native-gifted-charts';
-import { COLORS } from '../../theme/colors';
-import EmptyComponent from '../../components/EmptyComponent';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  ActivityIndicator,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import api from "../../services";
+import { LineChart, BarChart } from "react-native-gifted-charts";
+import { COLORS } from "../../theme/colors";
+import EmptyComponent from "../../components/EmptyComponent";
 
 const Other = () => {
   const [chartData, setChartData] = useState({
@@ -32,25 +38,25 @@ const Other = () => {
         });
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     } finally {
       setLoading(false); // Stop loading
     }
   };
 
   // Function to format data for Line Chart
-  const formatChartData = values =>
+  const formatChartData = (values) =>
     values.map((value, index) => ({
       value,
-      label: chartData.monthLabels[index] || '',
+      label: chartData.monthLabels[index] || "",
     }));
 
   // Function to format data for Bar Chart
-  const formatBarChartData = values =>
+  const formatBarChartData = (values) =>
     values.map((value, index) => ({
       value,
-      label: chartData.monthLabels[index] || '',
-      frontColor: ['#7EA8BE', '#A1CF6B', '#A48BE0', '#FFB347'][index % 4], 
+      label: chartData.monthLabels[index] || "",
+      frontColor: ["#7EA8BE", "#A1CF6B", "#A48BE0", "#FFB347"][index % 4],
     }));
 
   return (
@@ -58,7 +64,11 @@ const Other = () => {
       {/* Show loader while fetching data */}
       {loading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={COLORS.newDark} />
+          <ActivityIndicator
+            size="large"
+            color={COLORS.newDark}
+            style={{ flex: 1 }}
+          />
           <Text style={styles.loadingText}>Loading charts...</Text>
         </View>
       ) : (
@@ -82,7 +92,9 @@ const Other = () => {
                 endFillColor="rgba(139, 139, 216, 0.07)"
               />
             </View>
-          ):(<EmptyComponent/>)}
+          ) : (
+            <EmptyComponent />
+          )}
 
           {/* Bar Chart */}
           {chartData.secondData.length > 0 && (
@@ -113,30 +125,30 @@ const styles = StyleSheet.create({
   },
   loaderContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 400, // Ensures loader is centered properly
   },
   loadingText: {
     fontSize: 16,
     color: COLORS.newDark,
     marginTop: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   chartContainer: {
     marginBottom: 40,
   },
   chartTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: COLORS.secondaryColor,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.8,
     marginBottom: 16,
     borderBottomWidth: 2,
-    borderBottomColor: '#A48BE0',
+    borderBottomColor: "#A48BE0",
     paddingBottom: 2,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
 });
 

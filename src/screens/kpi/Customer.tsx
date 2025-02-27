@@ -50,7 +50,7 @@ const Customer = () => {
       {/* Show loader while fetching data */}
       {loading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={COLORS.newDark} />
+          <ActivityIndicator size="large" color={COLORS.newDark} style={{ flex: 1 }} />
           <Text style={styles.loadingText}>Loading charts...</Text>
         </View>
       ) : (
@@ -74,7 +74,7 @@ const Customer = () => {
                 endFillColor="rgba(139, 139, 216, 0.07)"
               />
             </View>
-          ):(<EmptyComponent/>)}
+          ) : (<EmptyComponent />)}
 
           {/* Line Chart for Second Data */}
           {chartData.secondData.length > 0 && (
