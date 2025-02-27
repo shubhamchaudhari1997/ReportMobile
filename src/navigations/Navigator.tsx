@@ -7,9 +7,9 @@ import {RootState} from '../store/store';
 import {useSelector} from 'react-redux';
 import Login from '../screens/auth/Login';
 import { AuthNavigator } from './Stacks';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../theme';
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 
 type NavigatorProps = PropsWithChildren<{}>;
 
