@@ -54,7 +54,17 @@ const getClientApi = ({ get, post, put }: Request) => {
   const getViewReportAgeing = (params: ViewReportModal) =>
     get({
       url: url.client.getReportDetails.getViewReportAgeing,
-      params
+      params,
+    });
+  const getViewReportDr = (params: ViewReportModal) =>
+    get({
+      url: url.client.getReportDetails.getViewReportDr,
+      params,
+    });
+  const getViewReportDetails = (params: ViewReportDetailsModal) =>
+    get({
+      url: url.client.getReportDetails.getViewReportDetails,
+      params,
     });
   const postSortByMYData = ({ template }: any) =>
     post({
@@ -94,6 +104,8 @@ const getClientApi = ({ get, post, put }: Request) => {
     getViewSLADetails,
     getReportsData,
     getViewReportAgeing,
+    getViewReportDr,
+    getViewReportDetails,
   };
 };
 export default getClientApi;

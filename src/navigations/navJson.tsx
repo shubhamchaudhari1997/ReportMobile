@@ -111,6 +111,22 @@ const appStacks = {
         type: 'Ionicons',
         options: {headerShown: false},
       },
+      {
+        name: 'DetailsReportViewDr',
+        key: 'detailsReportViewDr',
+        component: SCREENS.DetailsReportViewDr,
+        icon: 'reader',
+        type: 'Ionicons',
+        options: {headerShown: false},
+      },
+      {
+        name: 'DetailsReportViewCommon',
+        key: 'detailsReportViewCommon',
+        component: SCREENS.DetailsReportViewCommon,
+        icon: 'reader',
+        type: 'Ionicons',
+        options: {headerShown: false},
+      },
     ],
   },
   kpiStacks: {
