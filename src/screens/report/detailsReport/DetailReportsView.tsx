@@ -1,8 +1,8 @@
 import { View, Text, ScrollView, FlatList, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import api from '../../services';
-import Container from '../../components/Container';
-import { COLORS } from '../../theme/colors';
+import api from '../../../services';
+import Container from '../../../components/Container';
+import { COLORS } from '../../../theme/colors';
 
 const DetailReportsView = (props) => {
 
@@ -86,7 +86,6 @@ const DetailReportsView = (props) => {
           title: 'Detail Reports',
           backgroundColor: COLORS.primaryColor,
           statusBarType: 'dark-content',
-          toggleDrawer: true,
         }}>
         <ScrollView horizontal style={styles.container}>
             <View>

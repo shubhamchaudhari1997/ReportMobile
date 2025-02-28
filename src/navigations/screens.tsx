@@ -17,7 +17,9 @@ import ViewKPI from '../screens/report/ViewKPI';
 import ViewKPIDetails from '../screens/report/ViewKPIDetails';
 import SLA from '../screens/qualityReport/SLA';
 import ViewSLA from '../screens/qualityReport/ViewSLA';
-import DetailReportsView from '../screens/report/DetailReportsView';
+import DetailReportsView from '../screens/report/detailsReport/DetailReportsView';
+import DetailsReportViewDr from '../screens/report/detailsReport/DetailsReportViewDr';
+import DetailsReportViewCommon from '../screens/report/detailsReport/DetailsReportViewCommon';
 
 export {
   StartUp,
@@ -38,5 +40,7 @@ export {
   ViewKPIDetails,
   SLA,
   ViewSLA,
-  DetailReportsView
+  DetailReportsView,
+  DetailsReportViewDr,
+  DetailsReportViewCommon
 };

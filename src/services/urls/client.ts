@@ -31,6 +31,8 @@ const clientController = () => {
     getKpiData: getCommonData(`ViewKPI`),
     getKPIDetails: getCommonData(`getKPIDetails/13`),
     getViewReportAgeing: getCommonData(`ViewReportAgeing`),
+    getViewReportDr: getCommonData(`ViewReportDrAgeing`),
+    getViewReportDetails: getCommonData(`ViewReportDetails`),
   };
 
   const getQualityReportDetails = {

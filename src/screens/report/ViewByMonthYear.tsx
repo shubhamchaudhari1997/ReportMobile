@@ -9,8 +9,11 @@ import ViewTableComponent from "./ViewTableComponent";
 import { Button } from "@rneui/base";
 import { fontsProxima } from "../../theme/typography";
 import EmptyComponent from "../../components/EmptyComponent";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const ViewByMonthYear = () => {
+  const userData:any = useSelector((state: RootState) => state.login.userData);
   const [loading, setLoading] = useState(true);
   const [selectedTemplateValue, setSelectedTemplateValue] = useState<
     string | null
@@ -22,7 +25,7 @@ const ViewByMonthYear = () => {
     null
   );
   const [tableData, setTableData] = useState<any | null>(null);
-  const [tableLoading, setTableLoading] = useState(false);  
+  const [tableLoading, setTableLoading] = useState(false);    
 
   useEffect(() => {
     getViewByMonthYearData();
@@ -44,8 +47,7 @@ const ViewByMonthYear = () => {
 
   const fetchTableData = async (templateValue?: string) => {
     const url = `https://apireposrtsystem-gmadfrdfb0cphham.centralindia-01.azurewebsites.net/api/Client/sortByMY?template=${templateValue}`;
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRpcmVjdG9yIiwibmFtZWlkIjoiZGY1NmE0MTMtNTZiNy00ZmQ3LThjNTktZmJiODBjY2EzODFiIiwicm9sZSI6IkNsaWVudCIsIm5iZiI6MTczOTk4MjAxMywiZXhwIjoxNzQwNTg2ODEzLCJpYXQiOjE3Mzk5ODIwMTMsImlzcyI6Imh0dHBzOi8vYXBpcmVwb3NydHN5c3RlbS1nbWFkZnJkZmIwY3BoaGFtLmNlbnRyYWxpbmRpYS0wMS5henVyZXdlYnNpdGVzLm5ldC8iLCJhdWQiOiJodHRwczovL3JlcG9ydHN5dGVtLmF6dXJld2Vic2l0ZXMubmV0LyJ9.Uwm-tBtRXJl9n4w4EtaDp3p4o7bWX_TT8tkxrWg_g5c";
+    const token = userData?.token
     const headers = {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
