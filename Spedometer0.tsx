@@ -2,12 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Svg, { Path, G, Line, Circle } from "react-native-svg";
 
-type Speedometer0Props ={
-  lable:string,
-  value:number
-  
-}
-const Speedometer0:React.FC<Speedometer0Props> = ({ lable,value}) => {
+type Speedometer0Props = {
+  lable: string;
+  value: number;
+};
+const Speedometer0: React.FC<Speedometer0Props> = ({ lable, value }) => {
   const radius = 100;
   const strokeWidth = 20;
   const center = radius + strokeWidth;
@@ -15,15 +14,15 @@ const Speedometer0:React.FC<Speedometer0Props> = ({ lable,value}) => {
 
   // Define color ranges
   const segments = [
-    { color:  "#2c7a2a",  range: [0, 20] }, // Red (0-10%)
-    { color: "#2c7a2a",range: [20, 45] }, // Yellow (10-25%)
-    { color: "#2c7a2a", range: [38, 50] }, // Green (25-100%)
+    { color: "#5f932e", range: [0, 20] }, // Red (0-10%)
+    { color: "#5f932e", range: [20, 45] }, // Yellow (10-25%)
+    { color: "#5f932e", range: [38, 50] }, // Green (25-100%)
   ];
 
   // Get active color
   const activeColor =
     segments.find(({ range }) => value >= range[0] && value < range[1])
-      ?.color || "#2c7a2a"; // Default green
+      ?.color || "#5f932e"; // Default green
 
   // Needle rotation (0° to 180°)
   const needleRotation = (Math.min(value, maxValue) / maxValue) * 180;
@@ -36,11 +35,10 @@ const Speedometer0:React.FC<Speedometer0Props> = ({ lable,value}) => {
           d={`M ${center - radius}, ${center} A ${radius} ${radius} 0 0 1 ${
             center + radius
           }, ${center}`}
-          stroke= "#f1c40f"
+          stroke="#f8e970"
           strokeWidth={strokeWidth}
           fill="none"
         />
-
         {/* Colored Segments */}
         {segments.map((segment, index) => {
           const startAngle = (segment.range[0] / maxValue) * 180 - 134;
@@ -62,7 +60,6 @@ const Speedometer0:React.FC<Speedometer0Props> = ({ lable,value}) => {
             />
           );
         })}
-
         {/* Needle */}
         <G rotation={needleRotation - 90} origin={`${center}, ${center}`}>
           <Line
@@ -74,18 +71,24 @@ const Speedometer0:React.FC<Speedometer0Props> = ({ lable,value}) => {
             strokeWidth="4"
           />
         </G>
-
         {/* Center Dot */}
         <Circle cx={center} cy={center} r={5} fill="#333" />
-
         {/* Labels (0%, 25%, 100%) */}
-        <Text style={[styles.label, { left: center - 110 }]}>0%</Text>
-        <Text style={[styles.label, { left: center - 10 ,top:140,fontSize:30}]}>{value}%</Text>
-        <Text style={[styles.label, { left: 210 }]}>100%</Text>
+        <Text style={[styles.label, { left: center - 80, top: center - 20 }]}>
+          0%
+        </Text>
+        <Text style={[styles.label, { left: center - 65, top: center - 60 }]}>
+          25%
+        </Text>
+        <Text style={[styles.label, { left: 160, top: center - 20 }]}>
+          100%
+        </Text>
       </Svg>
 
       {/* Text Label Below Speedometer */}
-      <Text style={styles.textLabel}>{lable}  % {value}</Text>
+      <Text style={styles.textLabel}>
+        {lable} {value}
+      </Text>
     </View>
   );
 };
@@ -94,9 +97,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    marginVertical:10,
-    marginTop:30
-
+    marginVertical: 10,
+    marginTop: 50,
   },
   label: {
     position: "absolute",
@@ -106,11 +108,12 @@ const styles = StyleSheet.create({
   },
   textLabel: {
     fontSize: 22,
-   // marginTop: 10,
-    color: "#e74c3c",
+    // marginTop: 10,
+    color: "#ec5050",
     fontWeight: "bold",
     fontStyle: "italic",
-    position: "absolute",bottom:20
+    position: "absolute",
+    bottom: 50,
   },
 });
 

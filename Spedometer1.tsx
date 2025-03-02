@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Svg, { Path, G, Line, Circle } from "react-native-svg";
 
-const Speedometer1 = ({ lable,value}:{ lable:any,value:any}) => {
+const Speedometer1 = ({ lable, value }: { lable: any; value: any }) => {
   const radius = 100;
   const strokeWidth = 20;
   const center = radius + strokeWidth;
@@ -10,15 +10,15 @@ const Speedometer1 = ({ lable,value}:{ lable:any,value:any}) => {
 
   // Define color ranges
   const segments = [
-    { color: "#e74c3c", range: [0, 10] }, // Red (0-10%)
-    { color: "#f1c40f", range: [20, 45] }, // Yellow (10-25%)
-    { color: "#2c7a2a", range: [40, 50] }, // Green (25-100%)
+    { color: "#ec5050", range: [0, 10] }, // Red (0-10%)
+    { color: "#f8e970", range: [20, 45] }, // Yellow (10-25%)
+    { color: "#5c942c", range: [40, 50] }, // Green (25-100%)
   ];
 
   // Get active color
   const activeColor =
     segments.find(({ range }) => value >= range[0] && value < range[1])
-      ?.color || "#2c7a2a"; // Default green
+      ?.color || "#5c942c"; // Default green
 
   // Needle rotation (0° to 180°)
   const needleRotation = (Math.min(value, maxValue) / maxValue) * 180;
@@ -31,7 +31,7 @@ const Speedometer1 = ({ lable,value}:{ lable:any,value:any}) => {
           d={`M ${center - radius}, ${center} A ${radius} ${radius} 0 0 1 ${
             center + radius
           }, ${center}`}
-          stroke="#e74c3c"
+          stroke="#ec5050"
           strokeWidth={strokeWidth}
           fill="none"
         />
@@ -74,13 +74,24 @@ const Speedometer1 = ({ lable,value}:{ lable:any,value:any}) => {
         <Circle cx={center} cy={center} r={5} fill="#333" />
 
         {/* Labels (0%, 25%, 100%) */}
-        <Text style={[styles.label, { left: center - 110 }]}>0%</Text>
-        <Text style={[styles.label, { left: center - 10 ,top:140,fontSize:30}]}>{value}%</Text>
-        <Text style={[styles.label, { left: 210 }]}>100%</Text>
+        <Text style={[styles.label, { left: center - 80, top: center - 10 }]}>
+          0%
+        </Text>
+        <Text style={[styles.label, { right: center - 55, top: center - 65 }]}>
+          75%
+        </Text>
+        <Text style={[styles.label, { right: center - 75, top: center - 35 }]}>
+          90%
+        </Text>
+        <Text style={[styles.label, { left: 170, top: center - 10 }]}>
+          100%
+        </Text>
       </Svg>
 
       {/* Text Label Below Speedometer */}
-      <Text style={styles.textLabel}>{lable} % {value}</Text>
+      <Text style={styles.textLabel}>
+        {lable} {value}
+      </Text>
     </View>
   );
 };
@@ -89,8 +100,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    marginVertical:10
-
+    marginVertical: 5,
   },
   label: {
     position: "absolute",
@@ -100,11 +110,12 @@ const styles = StyleSheet.create({
   },
   textLabel: {
     fontSize: 22,
-   // marginTop: 10,
-    color: "#e74c3c",
+    // marginTop: 10,
+    color: "#ec5050",
     fontWeight: "bold",
     fontStyle: "italic",
-    position: "absolute",bottom:20
+    position: "absolute",
+    bottom: 50,
   },
 });
 

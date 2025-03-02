@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   },
   tableHeader: {
     flexDirection: "row",
-    backgroundColor: COLORS.newDark,
+    backgroundColor: COLORS.blue_chipe,
     paddingVertical: 10,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 14,
     fontWeight: "bold",
-    color: COLORS.primaryColor,
+    color: COLORS.newDark,
     paddingHorizontal: 8,
     paddingLeft: 20,
   },

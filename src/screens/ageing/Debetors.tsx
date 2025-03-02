@@ -97,36 +97,37 @@ const Debetors = () => {
       />
 
       {/* Loading Indicator */}
-      {loading && (
+      {loading ? (
         <ActivityIndicator
           size="large"
           color={COLORS.newDark}
-          style={{ flex: 1 }}
+          style={{ flex: 1, marginTop: 100 }}
         />
-      )}
-
-      {/* Show Chart Only When a Label is Selected */}
-      {!loading && selectedTemplate && chartData ? (
-        <View style={{ alignItems: "center", marginTop: 20 }}>
-          <Text style={styles.chartTitle}>Dr Ageing</Text>
-          <LineChart
-            data={chartData}
-            width={300} // Adjust width
-            height={200} // Adjust height
-            spacing={64}
-            thickness={1}
-            yAxisTextStyle={{ color: "black", fontSize: 10 }}
-            xAxisLabelTextStyle={{ color: "black", fontSize: 10 }}
-            showVerticalLines
-            color="green"
-            isAnimated
-            areaChart
-            startFillColor="rgba(110, 189, 163, 0)"
-            endFillColor="rgba(122, 186, 142, 0.07)"
-          />
-        </View>
       ) : (
-        <EmptyComponent />
+        <>
+          {!loading && selectedTemplate && chartData ? (
+            <View style={{ alignItems: "center", marginTop: 20 }}>
+              <Text style={styles.chartTitle}>Dr Ageing</Text>
+              <LineChart
+                data={chartData}
+                width={300} // Adjust width
+                height={200} // Adjust height
+                spacing={64}
+                thickness={1}
+                yAxisTextStyle={{ color: "black", fontSize: 10 }}
+                xAxisLabelTextStyle={{ color: "black", fontSize: 10 }}
+                showVerticalLines
+                color="green"
+                isAnimated
+                areaChart
+                startFillColor="rgba(110, 189, 163, 0)"
+                endFillColor="rgba(122, 186, 142, 0.07)"
+              />
+            </View>
+          ) : (
+            <EmptyComponent />
+          )}
+        </>
       )}
     </View>
   );

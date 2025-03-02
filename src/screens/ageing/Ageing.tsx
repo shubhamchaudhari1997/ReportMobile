@@ -92,42 +92,44 @@ const Ageing = () => {
       />
 
       {/* Loading Indicator */}
-      {loading && (
+      {loading ? (
         <ActivityIndicator
           size="large"
           color={COLORS.newDark}
-          style={{ flex: 1 }}
+          style={{ flex: 1 ,marginTop:100}}
         />
-      )}
-
-      {/* Show Chart Only When a Label is Selected */}
-      {!loading && selectedTemplate && chartData ? (
-        <View style={{ alignItems: "center", marginTop: 20 }}>
-          <Text style={styles.chartTitle}>Ageing</Text>
-          <LineChart
-            data={chartData}
-            width={300}
-            height={200}
-            spacing={90}
-            thickness={1}
-            yAxisTextStyle={{ color: "black", fontSize: 12 }}
-            xAxisLabelTextStyle={{ color: "black", fontSize: 12 }}
-            showVerticalLines
-            color="green"
-            isAnimated
-            areaChart
-            startFillColor="rgba(110, 189, 163, 0)"
-            endFillColor="rgba(122, 186, 142, 0.07)"
-          />
-        </View>
       ) : (
-        <EmptyComponent />
+        <>
+          {selectedTemplate && chartData ? (
+            <View style={{ alignItems: "center", marginTop: 20 }}>
+              <Text style={styles.chartTitle}>Ageing</Text>
+              <LineChart
+                data={chartData}
+                width={300}
+                height={200}
+                spacing={90}
+                thickness={1}
+                yAxisTextStyle={{ color: "black", fontSize: 12 }}
+                xAxisLabelTextStyle={{ color: "black", fontSize: 12 }}
+                showVerticalLines
+                color="green"
+                isAnimated
+                areaChart
+                startFillColor="rgba(110, 189, 163, 0)"
+                endFillColor="rgba(122, 186, 142, 0.07)"
+              />
+            </View>
+          ) : (
+            <EmptyComponent />
+          )}
+        </>
       )}
     </View>
   );
 };
 
 export default Ageing;
+
 const styles = StyleSheet.create({
   chartTitle: {
     fontSize: 14,
