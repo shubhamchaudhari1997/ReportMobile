@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.blue_chipe,
     justifyContent: "space-between",
   },
-  headerText: { fontWeight: "bold" },
+  headerText: { fontWeight: "bold",color:COLORS.newDark },
   row: {
     flexDirection: "row",
     padding: 10,

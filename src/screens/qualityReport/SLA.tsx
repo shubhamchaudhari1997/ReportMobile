@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
-    backgroundColor: COLORS.newDark,
+    backgroundColor: COLORS.blue_chipe,
     paddingVertical: 12,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -144,11 +144,11 @@ const styles = StyleSheet.create({
   actionHeader: {
     flex: 1,
     textAlign: "right",
-    color: COLORS.primaryColor,
+    color: COLORS.newDark,
     fontWeight: "bold",
   },
-  clientHeader: { flex: 2, color: COLORS.primaryColor, fontWeight: "bold" },
-  dateHeader: { flex: 1, color: COLORS.primaryColor, fontWeight: "bold" },
+  clientHeader: { flex: 2, color: COLORS.newDark, fontWeight: "bold" },
+  dateHeader: { flex: 1, color: COLORS.newDark, fontWeight: "bold" },
   viewButton: {
     backgroundColor: COLORS.blueIcon,
     paddingVertical: 6,
