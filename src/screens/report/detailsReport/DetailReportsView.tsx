@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: "row",
-    backgroundColor: "#ddd",
+    backgroundColor:COLORS.blue_chipe,
     paddingVertical: 10,
   },
   headerText: {
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   totalRow: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#baddf5',
     fontWeight: "bold",
   },
   cell: {

@@ -77,9 +77,9 @@ const Speedometer0: React.FC<Speedometer0Props> = ({ lable, value }) => {
         <Text style={[styles.label, { left: center - 80, top: center - 20 }]}>
           0%
         </Text>
-        {/* <Text style={[styles.label, { left: center - 65, top: center - 60 }]}>
+        <Text style={[styles.label, { left: center - 65, top: center - 60 }]}>
           25%
-        </Text> */}
+        </Text>
         <Text style={[styles.label, { left: 160, top: center - 20 }]}>
           100%
         </Text>

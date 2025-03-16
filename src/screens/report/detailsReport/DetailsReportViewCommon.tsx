@@ -79,7 +79,7 @@ const DetailsReportViewCommon = (props) => {
               <View
                 style={[
                   styles.headerRow,
-                  { backgroundColor: COLORS.red_chipe ,marginBottom:0.4},
+                  {  backgroundColor: '#baddf5' ,marginBottom:0.4},
                 ]}
               >
                 {!hideCol && <Text style={styles.headerCell}>Total</Text>}
@@ -100,7 +100,7 @@ const DetailsReportViewCommon = (props) => {
                   key={rowIndex}
                   style={[
                     styles.dataRow,
-                    { backgroundColor: COLORS.red_chipe,margin:0.4 },
+                    { backgroundColor: '#baddf5',margin:0.4 },
                   ]}
                 >
                   {!hideCol && (
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: "row",
-    backgroundColor: "#ddd",
+    backgroundColor:COLORS.blue_chipe,
     paddingVertical: 10,
   },
   headerCell: {
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   totalRow: {
-    backgroundColor: COLORS.red_chipe,
+    backgroundColor: '#baddf5',
     fontWeight: "bold",
   },
   dataCell: {

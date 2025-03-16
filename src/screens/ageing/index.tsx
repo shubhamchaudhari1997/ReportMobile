@@ -3,18 +3,18 @@ import React, {useState} from 'react';
 import Container from '../../components/Container';
 import Selector from '../../components/Selector';
 import {COLORS} from '../../theme/colors';
-import Debetors from './Debetors';
+import Debtors from './Debtors';
 import Ageing from './Ageing';
 
 const screens = [
   {label: 'Ageing', value: 'Ageing'},
-  {label: 'Debetors', value: 'Debetors'},
+  {label: 'Debtors', value: 'Debtors'},
 ];
 
 // Mapping screen names to their respective components
 const screenComponents: Record<string, React.FC> = {
   Ageing,
-  Debetors,
+  Debtors,
 };
 
 const index = () => {

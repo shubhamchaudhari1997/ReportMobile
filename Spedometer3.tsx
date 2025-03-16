@@ -84,15 +84,15 @@ const Speedometer3 = ({ lable, value }: { lable: any; value: any }) => {
         <Text style={[styles.label, { left: center - 80, top: center - 20 }]}>
           0
         </Text>
-        {/* <Text style={[styles.label, { left: center - 50, top: center - 60 }]}>
+        <Text style={[styles.label, { left: center - 50, top: center - 60 }]}>
           1
         </Text>
         <Text style={[styles.label, { right: center - 50, top: center - 60 }]}>
           2
-        </Text> */}
-        <Text style={[styles.label, { left: 170, top: center - 20 }]}>
-          3
         </Text>
+        {/* <Text style={[styles.label, { left: 170, top: center - 20 }]}>
+          3
+        </Text> */}
       </Svg>
 
       {/* Text Label Below Speedometer */}

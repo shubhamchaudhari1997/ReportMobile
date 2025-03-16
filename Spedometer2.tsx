@@ -73,12 +73,12 @@ const Speedometer2 = ({ lable, value }: { lable: any; value: any }) => {
         <Text style={[styles.label, { left: center - 80, top: center - 20 }]}>
           0
         </Text>
-        {/* <Text style={[styles.label, { left: center - 55, top: center - 65 }]}>
+        <Text style={[styles.label, { left: center - 55, top: center - 65 }]}>
           30
         </Text>
         <Text style={[styles.label, { left: center - 5, top: center - 80 }]}>
           45
-        </Text> */}
+        </Text>
         <Text style={[styles.label, { left: 170, top: center - 20 }]}>
           100
         </Text>

@@ -77,12 +77,12 @@ const Speedometer1 = ({ lable, value }: { lable: any; value: any }) => {
         <Text style={[styles.label, { left: center - 80, top: center - 10 }]}>
           0%
         </Text>
-        {/* <Text style={[styles.label, { right: center - 55, top: center - 65 }]}>
+        <Text style={[styles.label, { right: center - 55, top: center - 65 }]}>
           75%
         </Text>
         <Text style={[styles.label, { right: center - 75, top: center - 35 }]}>
           90%
-        </Text> */}
+        </Text>
         <Text style={[styles.label, { left: 170, top: center - 10 }]}>
           100%
         </Text>
