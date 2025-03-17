@@ -6,7 +6,7 @@ import { LineChart } from "react-native-gifted-charts";
 import { COLORS } from "../../theme/colors";
 import EmptyComponent from "../../components/EmptyComponent";
 
-const Debetors = () => {
+const Debtors = () => {
   const [loading, setLoading] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
@@ -20,7 +20,6 @@ const Debetors = () => {
     getDrAgeingData();
   }, []);
 
-  console.log(responseData, "responseData");
 
   const formatChartData = (data: any) => {
     return [
@@ -133,7 +132,7 @@ const Debetors = () => {
   );
 };
 
-export default Debetors;
+export default Debtors;
 const styles = StyleSheet.create({
   chartTitle: {
     fontSize: 14,
