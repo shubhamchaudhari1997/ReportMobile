@@ -3,6 +3,8 @@ import * as SCREENS from './screens';
 
 import {Component} from 'react';
 import DashboardStacks, { AgeingStacks, KPIStacks, OperationalStacks, QualityReportStacks, ReportsStacks } from './Stacks';
+import DeleteAccount from '../screens/common/DeleteAccount';
+import { Platform } from 'react-native';
 
 const appStacks = {
  // Auth Stack
@@ -284,7 +286,14 @@ const appDrawerTabs: AppDrawerTabType = {
       icon: 'layers-outline',
       type: 'Ionicons',
     },  
-  ],
+   Platform.OS==='ios' &&{
+      name: 'Delete Account',
+      key: 'sLA&Deliverables',
+      component: DeleteAccount,
+      icon: 'deleteuser',
+      type: 'AntDesign',
+    }, 
+  ].filter(Boolean),
 };
 
 const appTopTabs: any = [];
