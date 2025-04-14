@@ -5,6 +5,7 @@ import Selector from "../../components/Selector";
 import { LineChart } from "react-native-gifted-charts";
 import { COLORS } from "../../theme/colors";
 import EmptyComponent from "../../components/EmptyComponent";
+import { barChartToolTip } from "../../theme/tooltipStyle";
 
 const Ageing = () => {
   const [loading, setLoading] = useState(false);
@@ -117,6 +118,7 @@ const Ageing = () => {
                 areaChart
                 startFillColor="rgba(110, 189, 163, 0)"
                 endFillColor="rgba(122, 186, 142, 0.07)"
+                pointerConfig={barChartToolTip}
               />
             </View>
           ) : (

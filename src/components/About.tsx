@@ -2,6 +2,7 @@ import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {BarChart} from 'react-native-gifted-charts';
+import { barChartToolTip } from '../theme/tooltipStyle';
 
 const About = () => {
   const data = [
@@ -35,6 +36,7 @@ const About = () => {
           frontColor="tomato"
           barMargin={12}
           yAxisThickness={0}
+            pointerConfig={barChartToolTip}
         />
       </View>
     </View>

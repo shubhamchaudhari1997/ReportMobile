@@ -10,6 +10,7 @@ import api from "../../services";
 import { LineChart, BarChart } from "react-native-gifted-charts";
 import { COLORS } from "../../theme/colors";
 import EmptyComponent from "../../components/EmptyComponent";
+import { barChartToolTip } from "../../theme/tooltipStyle";
 
 const Other = () => {
   const [chartData, setChartData] = useState({
@@ -90,6 +91,7 @@ const Other = () => {
                 areaChart
                 startFillColor="rgba(158, 158, 191, 0.1)"
                 endFillColor="rgba(139, 139, 216, 0.07)"
+                pointerConfig={barChartToolTip}
               />
             </View>
           ) : (
@@ -108,6 +110,7 @@ const Other = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
+                  pointerConfig={barChartToolTip}
               />
             </View>
           )}
