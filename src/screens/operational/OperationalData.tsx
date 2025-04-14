@@ -11,6 +11,7 @@ import { BarChart } from "react-native-gifted-charts";
 import api from "../../services";
 import { COLORS } from "../../theme/colors";
 import EmptyComponent from "../../components/EmptyComponent";
+import { barChartToolTip } from "../../theme/tooltipStyle";
 
 const OperationalData = ({
   selectedFileId,
@@ -90,6 +91,7 @@ const OperationalData = ({
           barBorderRadius={4}
           showValuesAsTopLabel
           isAnimated
+          pointerConfig={barChartToolTip}
         />
       </View>
     );

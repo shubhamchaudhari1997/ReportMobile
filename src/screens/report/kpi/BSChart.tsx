@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import { BarChart } from 'react-native-gifted-charts';
 import { COLORS } from '../../../theme/colors';
+import { barChartToolTip } from '../../../theme/tooltipStyle';
 
 const BSChart = ({ dataString }: { dataString: string }) => {
   const [loading, setLoading] = useState(true);
@@ -51,6 +52,7 @@ const BSChart = ({ dataString }: { dataString: string }) => {
               barWidth={30}
               barBorderRadius={4}
               showValuesAsTopLabel
+                pointerConfig={barChartToolTip}
             />
           </View>
         ))

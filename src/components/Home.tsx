@@ -7,6 +7,7 @@ import {
   PieChart,
   PopulationPyramid,
 } from 'react-native-gifted-charts';
+import { barChartToolTip } from '../theme/tooltipStyle';
 
 const Home = () => {
   const data = [
@@ -23,10 +24,10 @@ const Home = () => {
   return (
     <ScrollView contentContainerStyle={{justifyContent: 'space-evenly'}}>
       <View>
-        <BarChart data={data} />
+        <BarChart data={data}    pointerConfig={barChartToolTip}/>
       </View>
       <View style={{margin: 10}}>
-        <LineChart data={data} />
+        <LineChart data={data}  pointerConfig={barChartToolTip} />
       </View>
       <View style={{margin: 10}}>
         <PieChart data={data} />

@@ -3,6 +3,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {BarChart} from 'react-native-gifted-charts';
+import { barChartToolTip } from '../theme/tooltipStyle';
 
 const Progress = () => {
   const navigation = useNavigation<any>();
@@ -32,6 +33,7 @@ const Progress = () => {
           frontColor="purple"
           barMargin={12}
           yAxisThickness={0}
+            pointerConfig={barChartToolTip}
         />
       </View>
     </View>
