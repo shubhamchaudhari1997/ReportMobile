@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import Svg, { Path, G, Line, Circle } from "react-native-svg";
 
 type Speedometer0Props = {
@@ -73,6 +73,17 @@ const Speedometer0: React.FC<Speedometer0Props> = ({ lable, value }) => {
         </G>
         {/* Center Dot */}
         <Circle cx={center} cy={center} r={5} fill="#333" />
+        <Image
+          source={require("./src/assets/images/red.png")}
+          style={{
+            height: 26,
+            width: 20,
+            position: "absolute",
+            top: 101,
+            left:10.8
+          }}
+          resizeMode="contain"
+        />
         {/* Labels (0%, 25%, 100%) */}
         <Text style={[styles.label, { left: center - 80, top: center - 20 }]}>
           0%
