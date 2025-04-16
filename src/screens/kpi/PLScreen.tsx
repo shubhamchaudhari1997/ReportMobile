@@ -105,11 +105,11 @@ const PLScreen = () => {
           )}
 
           {/* Line Chart for Second Data */}
-          {chartData.secondData.length > 0 && (
+          {chartData.thirdData.length > 0 && (
             <View style={styles.chartContainer}>
               <Text style={styles.chartTitle}>Gross Profit</Text>
               <LineChart
-                data={formatChartData(chartData.secondData)}
+                data={formatChartData(chartData.thirdData)}
                 height={200}
                 width={400}
                 spacing={90}
@@ -127,11 +127,11 @@ const PLScreen = () => {
           )}
 
           {/* Bar Chart for Third Data */}
-          {chartData.thirdData.length > 0 && (
+          {chartData.secondData.length > 0 && (
             <View style={styles.chartContainer}>
               <Text style={styles.chartTitle}>Overhead rate</Text>
               <BarChart
-                data={formatBarChartData(chartData.thirdData)}
+                data={formatBarChartData(chartData.secondData)}
                 height={200}
                 width={350}
                 spacing={40}
