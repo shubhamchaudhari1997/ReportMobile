@@ -10,7 +10,7 @@ import api from "../../services";
 import { LineChart, BarChart } from "react-native-gifted-charts";
 import { COLORS } from "../../theme/colors";
 import EmptyComponent from "../../components/EmptyComponent";
-import { barChartToolTip } from "../../theme/tooltipStyle";
+import { barChartToolTip, getBarChartTooltipConfig } from "../../theme/tooltipStyle";
 
 const PLScreen = () => {
   const [chartData, setChartData] = useState({
@@ -96,7 +96,8 @@ const PLScreen = () => {
                 areaChart
                 startFillColor="rgba(110, 189, 163, 0)"
                 endFillColor="rgba(122, 186, 142, 0.07)"
-                 pointerConfig={barChartToolTip}
+              ///  pointerConfig={barChartToolTip}
+                 pointerConfig={getBarChartTooltipConfig("Revenue Growth Rate")}
                  
               />
             </View>
@@ -121,7 +122,9 @@ const PLScreen = () => {
                 areaChart
                 startFillColor="rgba(255, 227, 172, 0.3)"
                 endFillColor="rgba(222, 178, 178, 0.1)"
-                pointerConfig={barChartToolTip}
+              // pointerConfig={barChartToolTip}
+              pointerConfig={getBarChartTooltipConfig("Gross Profit")}
+               
               />
             </View>
           )}
@@ -138,7 +141,8 @@ const PLScreen = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                  pointerConfig={barChartToolTip}
+                  //pointerConfig={barChartToolTip}
+                  pointerConfig={getBarChartTooltipConfig("Overhead rate")}
               />
             </View>
           )}
@@ -155,7 +159,8 @@ const PLScreen = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                  pointerConfig={barChartToolTip}
+                 // pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Net Profit")}
               />
             </View>
           )}

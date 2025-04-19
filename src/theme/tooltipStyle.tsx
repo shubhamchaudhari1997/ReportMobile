@@ -30,3 +30,41 @@ export const barChartToolTip ={
       );
     },
   }
+
+
+
+  export const getBarChartTooltipConfig = (tooltipText: string) => ({
+    pointerStripHeight: 160,
+    pointerStripColor: 'gray',
+    pointerStripWidth: 2,
+    pointerColor: 'red',
+    radius: 6,
+    pointerLabelWidth: 120,
+    pointerLabelHeight: 100,
+    activatePointersOnLongPress: false,
+    autoAdjustPointerLabelPosition: true,
+    pointerLabelComponent: (items: any) => {
+      const label = items?.[0]?.label ?? '';
+      const value = items?.[0]?.value ?? '';
+  
+      return (
+        <View
+          style={{
+            backgroundColor: '#fff',
+            padding: 10,
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: '#ddd',
+          }}
+        >
+           <Text style={{ color: '#000', marginTop: 4 }}>
+            {tooltipText}
+          </Text>
+          <Text style={{ color: '#000', fontWeight: 'bold' }}>
+            {label}: {value}
+          </Text>
+         
+        </View>
+      );
+    },
+  });
