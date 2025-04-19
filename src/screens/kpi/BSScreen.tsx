@@ -4,7 +4,7 @@ import api from '../../services';
 import { LineChart, BarChart } from 'react-native-gifted-charts';
 import { COLORS } from '../../theme/colors';
 import EmptyComponent from '../../components/EmptyComponent';
-import { barChartToolTip } from '../../theme/tooltipStyle';
+import { getBarChartTooltipConfig } from '../../theme/tooltipStyle';
 
 const BSScreen = () => {
   const [chartData, setChartData] = useState({
@@ -88,7 +88,7 @@ const BSScreen = () => {
                 areaChart
                 startFillColor="rgba(158, 158, 191, 0)"
                 endFillColor="rgba(139, 139, 216, 0.07)"
-                pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Current Ratio")}
               />
             </View>
           ):(<EmptyComponent/>)}
@@ -110,7 +110,7 @@ const BSScreen = () => {
                 areaChart
                 startFillColor="rgba(255, 227, 172, 0.3)"
                 endFillColor="rgba(222, 178, 178, 0.1)"
-                pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Debt Equity Ratio")}
               />
             </View>
           )}
@@ -127,7 +127,7 @@ const BSScreen = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                  pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Day Sales o/s")}
               />
             </View>
           )}
@@ -144,7 +144,7 @@ const BSScreen = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                  pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Days Inventory o/s")}
               />
             </View>
           )}
@@ -161,7 +161,7 @@ const BSScreen = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                  pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Days Payable")}
               />
             </View>
           )}
@@ -182,7 +182,7 @@ const BSScreen = () => {
                 areaChart
                 startFillColor="rgba(135, 197, 197, 0.21)"
                 endFillColor="rgba(199, 240, 240, 0.1)"
-                pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Days Cash Conversion")}
               />
             </View>
           )}

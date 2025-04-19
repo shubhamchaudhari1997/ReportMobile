@@ -10,7 +10,7 @@ import api from "../../services";
 import { BarChart } from "react-native-gifted-charts";
 import { COLORS } from "../../theme/colors";
 import EmptyComponent from "../../components/EmptyComponent";
-import { barChartToolTip } from "../../theme/tooltipStyle";
+import { getBarChartTooltipConfig } from "../../theme/tooltipStyle";
 
 const Employee = () => {
   const [chartData, setChartData] = useState({
@@ -79,7 +79,7 @@ const Employee = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                  pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Retention")}
               />
             </View>
           ) : (
@@ -98,7 +98,7 @@ const Employee = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Attrition")}
               />
             </View>
           )}
