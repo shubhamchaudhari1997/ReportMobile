@@ -9,7 +9,9 @@ import EmptyComponent from "../../components/EmptyComponent";
 const Debtors = () => {
   const [loading, setLoading] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
-  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(null);
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
+    null
+  );
   const [debetorsData, setDebetorsData] = useState<any[] | null>(null);
   const [chartData, setChartData] = useState<any>(null);
   const [rawData, setRawData] = useState<any>(null);
@@ -19,11 +21,17 @@ const Debtors = () => {
   }, []);
 
   const formatChartData = (data: any) => {
+    console.log(data, "data");
+
     const chart = [
       { value: data["< 30"] || 0, text: "< 30", color: "#a5dfdf" },
       { value: data["< 31 to 60"] || 0, text: "< 31 to 60", color: "#ccb2ff" },
       { value: data["< 61 to 90"] || 0, text: "< 61 to 90", color: "#ffcf9f" },
-      { value: data["< 91 to 180"] || 0, text: "< 91 to 180", color: "#9ad0f5" },
+      {
+        value: data["< 91 to 180"] || 0,
+        text: "< 91 to 180",
+        color: "#9ad0f5",
+      },
       { value: data[" 180 above"] || 0, text: "180 above", color: "#ffb1c1" },
     ];
     return chart;
@@ -32,7 +40,9 @@ const Debtors = () => {
   const fetchDebtorsData = async (id: number) => {
     try {
       setLoading(true);
-      const { data, status } = await api.client.getDrAgeingTemplate({ tempid: id });
+      const { data, status } = await api.client.getDrAgeingTemplate({
+        tempid: id,
+      });
       if (status === 200) {
         setRawData(data);
         setChartData(formatChartData(data));
@@ -93,7 +103,7 @@ const Debtors = () => {
   );
 
   return (
-    <View style={{ }}>
+    <View style={{}}>
       <Selector
         data={formattedData}
         onChangeText={handleSelection}
@@ -117,15 +127,34 @@ const Debtors = () => {
               <PieChart
                 data={chartData}
                 radius={130}
-                showText
                 textColor="black"
                 textSize={12}
                 strokeColor="#007AFF"
                 strokeWidth={1}
-                showTooltip={true}
-                tooltipBackgroundColor={'white'}
-                tooltipDuration={2000}
+                showTooltip
+                tooltipDuration={3000}
+                tooltipComponent={(item:any) => {
+                  const slice = chartData?.[item];
+                  if (!slice) return null;
+                  return (
+                    <View
+                      style={{
+                        backgroundColor: 'black',
+                        padding: 8,
+                        borderRadius: 6,
+                        borderColor: '#ccc',
+                        borderWidth: 1,
+                        opacity:0.8
+                      }}
+                    >
+                      <Text style={{ fontWeight: 'bold', color: 'white' }}>
+                        {slice.text}: {slice.value?.toLocaleString?.()}
+                      </Text>
+                    </View>
+                  );
+                }}
               />
+
               {renderLegend()}
             </View>
           ) : (

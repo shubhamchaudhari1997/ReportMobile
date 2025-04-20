@@ -4,7 +4,7 @@ import api from '../../services';
 import { LineChart } from 'react-native-gifted-charts';
 import { COLORS } from '../../theme/colors';
 import EmptyComponent from '../../components/EmptyComponent';
-import { barChartToolTip } from '../../theme/tooltipStyle';
+import { getBarChartTooltipConfig } from '../../theme/tooltipStyle';
 
 const Customer = () => {
   const [chartData, setChartData] = useState({
@@ -73,7 +73,7 @@ const Customer = () => {
                 areaChart
                 startFillColor="rgba(158, 158, 191, 0)"
                 endFillColor="rgba(139, 139, 216, 0.07)"
-                pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Curning%")}
               />
             </View>
           ) : (<EmptyComponent />)}
@@ -95,7 +95,7 @@ const Customer = () => {
                 areaChart
                 startFillColor="rgba(255, 227, 172, 0.3)"
                 endFillColor="rgba(222, 178, 178, 0.1)"
-                pointerConfig={barChartToolTip}
+                pointerConfig={getBarChartTooltipConfig("Aquisition cost")}
               />
             </View>
           )}

@@ -3,7 +3,7 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {BarChart} from 'react-native-gifted-charts';
 import LinearGradient from 'react-native-linear-gradient';
-import { barChartToolTip } from '../theme/tooltipStyle';
+import { getBarChartTooltipConfig } from '../theme/tooltipStyle';
 
 const Settings = () => {
   const data = [
@@ -33,7 +33,7 @@ const Settings = () => {
           backgroundColor="#f4f4f4"
           barMargin={12}
           yAxisThickness={0} // Hide Y-Axis for a minimal look
-            pointerConfig={barChartToolTip}
+          pointerConfig={getBarChartTooltipConfig("Monthly Sales Data")}
         />
         <LinearGradient
           colors={['#4c669f', '#3b5998', '#192f6a']}
