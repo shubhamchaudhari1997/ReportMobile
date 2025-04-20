@@ -259,13 +259,6 @@ const appDrawerTabs: AppDrawerTabType = {
       type: 'Ionicons',
     },
     {
-      name: 'Detail Report',
-      key: 'detailsReport',
-      component: ReportsStacks,
-      icon: 'list',
-      type: 'Ionicons',
-    },
-    {
       name: 'KPI',
       key: 'kpi',
       component: KPIStacks,
@@ -279,6 +272,13 @@ const appDrawerTabs: AppDrawerTabType = {
       icon: 'library-outline',
       type: 'Ionicons',
     },  
+    {
+      name: 'Detail Reports',
+      key: 'detailsReport',
+      component: ReportsStacks,
+      icon: 'list',
+      type: 'Ionicons',
+    },
     {
       name: 'SLA & Deliverables',
       key: 'sLA&Deliverables',

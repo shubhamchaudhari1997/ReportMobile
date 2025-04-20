@@ -59,7 +59,7 @@ const Customer = () => {
           {/* Line Chart for First Data */}
           {chartData.firstData.length > 0 ? (
             <View style={styles.chartContainer}>
-              <Text style={styles.chartTitle}>Curning%</Text>
+              <Text style={styles.chartTitle}>Churning%</Text>
               <LineChart
                 data={formatChartData(chartData.firstData)}
                 height={200}
@@ -73,7 +73,7 @@ const Customer = () => {
                 areaChart
                 startFillColor="rgba(158, 158, 191, 0)"
                 endFillColor="rgba(139, 139, 216, 0.07)"
-                pointerConfig={getBarChartTooltipConfig("Curning%")}
+                pointerConfig={getBarChartTooltipConfig("Churning%")}
               />
             </View>
           ) : (<EmptyComponent />)}
