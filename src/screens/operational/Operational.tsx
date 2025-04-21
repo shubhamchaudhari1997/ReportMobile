@@ -74,7 +74,7 @@ const Operational = () => {
   return (
     <Container
       header={{
-        title: `Operational Report`,
+        title: `Operational Reports`,
         backgroundColor: COLORS.primaryColor,
         statusBarType: "dark-content",
         toggleDrawer: true,
