@@ -78,7 +78,7 @@ const Speedometer1 = ({ lable, value }: { lable: any; value: any }) => {
           0%
         </Text>
         <Text style={[styles.label, { right: center - 55, top: center - 65 }]}>
-          75%
+          70%
         </Text>
         <Text style={[styles.label, { right: center - 75, top: center - 35 }]}>
           90%

@@ -77,7 +77,7 @@ const Other = () => {
           {/* Line Chart */}
           {chartData.firstData.length > 0 ? (
             <View style={styles.chartContainer}>
-              <Text style={styles.chartTitle}>Other Line Chart</Text>
+              <Text style={styles.chartTitle}>BEP</Text>
               <LineChart
                 data={formatChartData(chartData.firstData)}
                 height={200}
@@ -91,7 +91,7 @@ const Other = () => {
                 areaChart
                 startFillColor="rgba(158, 158, 191, 0.1)"
                 endFillColor="rgba(139, 139, 216, 0.07)"
-                pointerConfig={getBarChartTooltipConfig("Other Line Chart")}
+                pointerConfig={getBarChartTooltipConfig("BEP")}
               />
             </View>
           ) : (
@@ -101,7 +101,7 @@ const Other = () => {
           {/* Bar Chart */}
           {chartData.secondData.length > 0 && (
             <View style={styles.chartContainer}>
-              <Text style={styles.chartTitle}>Other Bar Chart</Text>
+              <Text style={styles.chartTitle}>Cash to profit</Text>
               <BarChart
                 data={formatBarChartData(chartData.secondData)}
                 height={200}
@@ -110,7 +110,7 @@ const Other = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                pointerConfig={getBarChartTooltipConfig("Other Bar Chart")}
+                pointerConfig={getBarChartTooltipConfig("Cash to profit")}
               />
             </View>
           )}

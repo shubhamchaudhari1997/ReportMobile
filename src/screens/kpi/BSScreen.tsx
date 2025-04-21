@@ -152,7 +152,7 @@ const BSScreen = () => {
           {/* Bar Chart for Fifth Data */}
           {chartData.fifthData.length > 0 && (
             <View style={styles.chartContainer}>
-              <Text style={styles.chartTitle}>Days Payable</Text>
+              <Text style={styles.chartTitle}>Days Payable o/s</Text>
               <BarChart
                 data={formatBarChartData(chartData.fifthData)}
                 height={200}
@@ -161,7 +161,7 @@ const BSScreen = () => {
                 barWidth={30}
                 barBorderRadius={4}
                 showValuesAsTopLabel
-                pointerConfig={getBarChartTooltipConfig("Days Payable")}
+                pointerConfig={getBarChartTooltipConfig("Days Payable o/s")}
               />
             </View>
           )}
