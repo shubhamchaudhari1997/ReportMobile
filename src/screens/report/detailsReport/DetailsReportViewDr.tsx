@@ -10,18 +10,23 @@ import React, { useEffect, useState } from "react";
 import api from "../../../services";
 import Container from "../../../components/Container";
 import { COLORS } from "../../../theme/colors";
+import { ColorSpace } from "react-native-reanimated";
 
 const DetailsReportViewDr = (props) => {
   let tempId = props?.route?.params?.item?.tempId;
   const [reportsData, setReportsData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  console.log(reportsData, "reportsData -->");
+
   const headers = [
-    "Party Name",
-    "Order No",
-    "Qty",
+    "Client Name", // "Party Name", 
     "Date",
-    "Value",
+    "Invoice No", // "Order No",
+    "Received",
+    "Balance", //"Value",
+    "Person",
+    // "Qty",
     "Ageing (Days)",
     "Ageing 0-30",
     "Ageing 31-60",
@@ -41,6 +46,7 @@ const DetailsReportViewDr = (props) => {
       const params = { TempID: tempId };
       const { data, status } = await api.client.getViewReportDr(params);
 
+      console.log(data,' getViewReportDr data --->>>')
       if (status === 200 && data?.Reports?.length) {
         const reportsArray = data.Reports[0];
         const ageingArray = data.Ageing || [];
@@ -73,6 +79,8 @@ const DetailsReportViewDr = (props) => {
             ageingAbove180:
               ageingArray[index] > 180 ? parseInt(cols[3], 10) || 0 : 0,
             isTargetReached: targetArray[index]?.isReached ? "✅" : "❌",
+            personName: cols[6], // person Name
+            received: cols[4], // received Name
           };
         });
 
@@ -146,10 +154,13 @@ const DetailsReportViewDr = (props) => {
                   ]}
                 >
                   <Text style={styles.cell}>{item.partyName}</Text>
-                  <Text style={styles.cell}>{item.orderNo}</Text>
-                  <Text style={styles.cell}>{item.qty}</Text>
                   <Text style={styles.cell}>{item.date}</Text>
+                  <Text style={styles.cell}>{item.orderNo}</Text>
+                  <Text style={styles.cell}>{item.received}</Text>
                   <Text style={styles.cell}>{item.value}</Text>
+                  <Text style={styles.cell}>{item.personName}</Text>
+                  {/* <Text style={styles.cell}>{item.qty}</Text> */}
+
                   <Text style={styles.cell}>{item.ageing}</Text>
                   <Text style={styles.cell}>{item.ageing0_30}</Text>
                   <Text style={styles.cell}>{item.ageing31_60}</Text>
@@ -179,7 +190,7 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: "row",
-    backgroundColor:COLORS.blue_chipe,
+    backgroundColor: COLORS.blue_chipe,
     paddingVertical: 10,
   },
   headerText: {
@@ -194,7 +205,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   totalRow: {
-    backgroundColor: '#baddf5',
+    backgroundColor: "#baddf5",
     fontWeight: "bold",
   },
   cell: {
